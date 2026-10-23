@@ -2,6 +2,14 @@
 
 A single-page security operations center (SOC) dashboard built with plain HTML, CSS and JavaScript. All data is simulated in the browser.
 
+## Live demo
+
+Open the deployed dashboard here:
+
+**https://swaramansi.github.io/Sentinal-threat-daahboard/**
+
+The site is hosted with GitHub Pages from the `main` branch.
+
 ## Features
 - Live attack map (canvas) with animated arcs from source cities to three targets
 - Live alert feed with severity filters, attack-type filter and search
@@ -16,8 +24,15 @@ A single-page security operations center (SOC) dashboard built with plain HTML, 
 ## Tech
 HTML, CSS, vanilla JavaScript, Canvas, SVG. No build step, no dependencies.
 
-## Run
-Open `index.html` in a browser.
+## Run locally
+
+No installation or build step is required. Open `index.html` directly in a browser, or serve the folder with any static web server:
+
+```bash
+python -m http.server 8000
+```
+
+Then open `http://localhost:8000`.
 
 ## Next steps
 - Connect to a real threat-intelligence feed through a backend API
