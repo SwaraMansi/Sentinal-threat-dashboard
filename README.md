@@ -17,7 +17,7 @@ The site is hosted with GitHub Pages from the `main` branch.
 - KPI counters, severity doughnut chart, top attack types and alerts-over-time chart
 - SOC product shell with operational status bar, response queue and platform health
 - Light/dark theme toggle and CSV export for the simulated alert stream
-- Light theme enabled by default with DM Sans and Space Grotesk typography
+- Light theme enabled by default with Rajdhani interface text and Orbitron display typography
 - Analyst workspace navigation, focus mode, keyboard search shortcut and response queue actions
 - Threat level indicator based on recent alert severity
 - Pause/resume, clear alerts, keyboard support (Esc), responsive layout, reduced-motion support
