@@ -4,40 +4,41 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Sentinel – Cyber Threat Monitor</title>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#081225;--panel:#0d1a34;--panel2:#122447;--line:#20385f;--text:#e9f1ff;--mute:#8da4c9;--accent:#43bdff;--accent2:#7c6cff;--crit:#ff5870;--high:#ffab52;--med:#f7d65b;--low:#50d4aa;--shadow:0 16px 40px rgba(0,0,0,.16);color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-:root.light{--bg:#f3f7fc;--panel:#fff;--panel2:#edf4fc;--line:#d5e0ef;--text:#13233e;--mute:#627693;--accent:#087fc0;--accent2:#6655d9;--shadow:0 12px 30px rgba(38,71,112,.1);color-scheme:light}
+:root{--bg:#f5f8fc;--panel:#fff;--panel2:#eef4fa;--line:#d8e2ed;--text:#17243a;--mute:#63758d;--accent:#087fbd;--accent2:#6655d9;--crit:#d93652;--high:#c86b13;--med:#947500;--low:#087c62;--shadow:0 12px 30px rgba(37,65,97,.09);color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root.dark{--bg:#081225;--panel:#0d1a34;--panel2:#122447;--line:#20385f;--text:#e9f1ff;--mute:#8da4c9;--accent:#43bdff;--accent2:#7c6cff;--crit:#ff5870;--high:#ffab52;--med:#f7d65b;--low:#50d4aa;--shadow:0 16px 40px rgba(0,0,0,.16);color-scheme:dark}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(circle at 85% -10%,#16345b 0,transparent 34%),var(--bg);color:var(--text);font:14px/1.45 "IBM Plex Sans",system-ui,sans-serif;font-variant-numeric:tabular-nums}
+body{margin:0;background:radial-gradient(circle at 85% -10%,#dfeef8 0,transparent 34%),var(--bg);color:var(--text);font:14px/1.5 "DM Sans",system-ui,sans-serif;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+:root.dark body{background:radial-gradient(circle at 85% -10%,#16345b 0,transparent 34%),var(--bg)}
 button,select,input{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .wrap{max-width:1450px;margin:0 auto;padding:24px 28px 40px}
 header{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;margin-bottom:18px}
-h1{font-size:24px;margin:0;font-weight:600;letter-spacing:.2px}
+h1{font:700 25px/1.05 "Space Grotesk",sans-serif;margin:0;letter-spacing:-.04em}
 h1 small{display:block;font-size:12px;color:var(--mute);font-weight:400}
-.brand{display:flex;align-items:center;gap:12px}.brandmark{display:grid;place-items:center;width:38px;height:38px;border:1px solid #40bbff88;border-radius:12px;color:var(--accent);background:linear-gradient(145deg,#163b61,#102444);font-size:19px;box-shadow:0 0 24px #168fe933}
-.eyebrow{text-transform:uppercase;letter-spacing:.13em;font-size:10px;color:var(--accent);font-weight:600}
+.brand{display:flex;align-items:center;gap:12px}.brandmark{display:grid;place-items:center;width:38px;height:38px;border:1px solid #8ac8e888;border-radius:12px;color:var(--accent);background:#e8f3f9;font-size:19px;box-shadow:0 5px 14px rgba(28,112,155,.12)}
+.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:10px;color:var(--accent);font-weight:700}
 .hr{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .live{display:flex;align-items:center;gap:6px;color:var(--mute);font-size:13px}
 .dot{width:8px;height:8px;border-radius:50%;background:var(--low);box-shadow:0 0 0 0 var(--low);animation:p 1.8s infinite}
 .paused .dot{background:var(--mute);animation:none}
 @keyframes p{70%{box-shadow:0 0 0 7px transparent}100%{box-shadow:0 0 0 0 transparent}}
-.btn{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:8px 14px;cursor:pointer;transition:.2s}
+.btn{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:8px 14px;cursor:pointer;transition:.2s;font-weight:500}
 .btn:hover{border-color:var(--accent)}
-.btn.pri{background:var(--accent);color:#04162b;border-color:var(--accent);font-weight:600}
+.btn.pri{background:var(--accent);color:#fff;border-color:var(--accent);font-weight:700}
 .lvl{padding:6px 12px;border-radius:8px;font-weight:600;border:1px solid currentColor}
 .grid{display:grid;gap:16px}
 .kpis{grid-template-columns:repeat(4,1fr);margin-bottom:16px}
 .main{grid-template-columns:2fr 1fr;margin-bottom:14px}
 .low{grid-template-columns:2fr 1fr}
-.opsbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin:2px 0 16px;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:#102344aa;color:var(--mute);font-size:12px}
+.opsbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin:2px 0 16px;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:var(--panel);color:var(--mute);font-size:12px}
 .opsbar strong{color:var(--text)}.opsmeta{display:flex;gap:18px;align-items:center}.statusmark{width:7px;height:7px;background:var(--low);border-radius:50%;display:inline-block;margin-right:6px}
 .sectionhead{display:flex;align-items:center;justify-content:space-between;gap:8px}.sectionhead h2{margin-bottom:0}.sectionhead small{color:var(--mute)}
 .subgrid{grid-template-columns:1.15fr .85fr;margin-top:16px}.queue{display:grid;gap:9px}.queueitem{display:flex;align-items:center;gap:10px;padding:10px;border:1px solid var(--line);border-radius:9px;background:var(--panel2);color:var(--text);text-align:left;font:inherit;width:100%;cursor:pointer}.queueitem strong{font-size:13px}.queueitem small{display:block;color:var(--mute)}.queueitem .qtime{margin-left:auto;color:var(--mute);font-size:11px}
 .health{display:grid;gap:13px}.healthrow{display:grid;grid-template-columns:110px 1fr 42px;align-items:center;gap:10px;font-size:12px}.healthbar{height:7px;border-radius:5px;background:var(--panel2);overflow:hidden}.healthbar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--low));border-radius:inherit}
-.card{background:linear-gradient(145deg,var(--panel),color-mix(in srgb,var(--panel) 88%,#173c6b));border:1px solid var(--line);border-radius:14px;padding:17px;min-width:0;box-shadow:var(--shadow)}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:17px;min-width:0;box-shadow:var(--shadow)}
 .card h2{font-size:14px;margin:0 0 12px;font-weight:600;color:var(--mute)}
 .kpi{position:relative;overflow:hidden}.kpi:after{content:"";position:absolute;width:80px;height:80px;right:-24px;bottom:-35px;border-radius:50%;border:1px solid #ffffff12}
 .kpi b{display:block;font-size:31px;font-weight:600;line-height:1.1}
@@ -57,13 +58,13 @@ h1 small{display:block;font-size:12px;color:var(--mute);font-weight:400}
 .chip{border:1px solid var(--line);background:transparent;border-radius:20px;padding:4px 12px;cursor:pointer;color:var(--mute)}
 .chip[aria-pressed=true]{color:var(--text);background:var(--panel2);border-color:currentColor}
 .chip[data-s=critical][aria-pressed=true]{color:var(--crit)}.chip[data-s=high][aria-pressed=true]{color:var(--high)}.chip[data-s=medium][aria-pressed=true]{color:var(--med)}.chip[data-s=low][aria-pressed=true]{color:var(--low)}
-.tools input,.tools select{background:var(--panel2);border:1px solid var(--line);border-radius:8px;padding:6px 10px}
+.tools input,.tools select{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:6px 10px}
 .tools input{flex:1;min-width:140px}
 .feed{max-height:380px;overflow:auto}
 .row{display:grid;grid-template-columns:70px 90px 1fr 130px 80px;gap:10px;align-items:center;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:9px 6px;cursor:pointer;min-width:560px}
 .row:hover{background:var(--panel2)}
 .row.new{animation:fl 1.2s}
-@keyframes fl{from{background:#1d3c6e}}
+@keyframes fl{from{background:#dff2fb}}
 .tag{font-size:12px;font-weight:600;padding:2px 8px;border-radius:6px;text-align:center;border:1px solid currentColor}
 .critical{color:var(--crit)}.high{color:var(--high)}.medium{color:var(--med)}.low{color:var(--low)}
 .mute{color:var(--mute)}
@@ -105,7 +106,7 @@ header{align-items:flex-end}.brandmark{border-radius:7px;width:34px;height:34px;
     <span class="live"><span class="dot"></span><span id="st">Live</span></span>
     <span class="lvl" id="lvl">Low</span>
     <button class="btn pri" id="pause">Pause feed</button>
-    <button class="btn" id="theme" title="Toggle light and dark theme">☼ Theme</button>
+    <button class="btn" id="theme" title="Switch to dark theme">☾ Dark mode</button>
     <button class="btn" id="export">Export</button>
     <button class="btn" id="clear">Clear alerts</button>
   </div>
@@ -274,7 +275,7 @@ const tc=$("#tl"),tx=tc.getContext("2d");
 function line(){
   const r=tc.getBoundingClientRect(),d=devicePixelRatio||1,w=r.width,h=r.height;tc.width=w*d;tc.height=h*d;tx.setTransform(d,0,0,d,0,0);
   const m=Math.max(4,...buckets),pad=22,st=(w-pad)/(buckets.length-1);
-  tx.strokeStyle="#203560";tx.fillStyle="#8fa3c7";tx.font="11px IBM Plex Sans,sans-serif";
+  tx.strokeStyle=getComputedStyle(document.documentElement).getPropertyValue("--line").trim();tx.fillStyle=getComputedStyle(document.documentElement).getPropertyValue("--mute").trim();tx.font="11px DM Sans,sans-serif";
   [0,.5,1].forEach(f=>{const y=h-14-(h-30)*f;tx.beginPath();tx.moveTo(pad,y);tx.lineTo(w,y);tx.stroke();tx.fillText(Math.round(m*f),0,y+4);});
   const pts=buckets.map((v,i)=>[pad+i*st,h-14-(h-30)*v/m]);
   tx.beginPath();pts.forEach((p,i)=>i?tx.lineTo(p[0],p[1]):tx.moveTo(p[0],p[1]));
@@ -305,7 +306,13 @@ $("#ack").onclick=()=>{if(!sel)return;sel.status="resolved";toast("Alert marked 
 document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{const s=c.dataset.s,p=c.getAttribute("aria-pressed")==="true";p?on.delete(s):on.add(s);c.setAttribute("aria-pressed",!p);render();});
 $("#q").oninput=()=>render();$("#type").onchange=()=>render();
 $("#pause").onclick=()=>{paused=!paused;$("#pause").textContent=paused?"Resume feed":"Pause feed";$("#st").textContent=paused?"Paused":"Live";document.body.classList.toggle("paused",paused);};
-$("#theme").onclick=()=>{document.documentElement.classList.toggle("light");toast(document.documentElement.classList.contains("light")?"Light theme enabled":"Dark theme enabled");};
+$("#theme").onclick=()=>{
+  const dark=document.documentElement.classList.toggle("dark");
+  $("#theme").textContent=dark?"☼ Light mode":"☾ Dark mode";
+  $("#theme").title=dark?"Switch to light theme":"Switch to dark theme";
+  toast(dark?"Dark theme enabled":"Light theme enabled");
+  line();
+};
 $("#focusMode").onclick=()=>{
   document.body.classList.toggle("focus");
   const focused=document.body.classList.contains("focus");
