@@ -6,7 +6,7 @@ A single-page security operations center (SOC) dashboard built with plain HTML, 
 
 Open the deployed dashboard here:
 
-**https://swaramansi.github.io/Sentinal-threat-daahboard/**
+**https://swaramansi.github.io/Sentinal-threat-dashboard/**
 
 The site is hosted with GitHub Pages from the `main` branch.
 
