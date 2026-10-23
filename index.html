@@ -35,7 +35,7 @@ h1 small{display:block;font-size:12px;color:var(--mute);font-weight:400}
 .opsbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin:2px 0 16px;padding:10px 14px;border:1px solid var(--line);border-radius:10px;background:#102344aa;color:var(--mute);font-size:12px}
 .opsbar strong{color:var(--text)}.opsmeta{display:flex;gap:18px;align-items:center}.statusmark{width:7px;height:7px;background:var(--low);border-radius:50%;display:inline-block;margin-right:6px}
 .sectionhead{display:flex;align-items:center;justify-content:space-between;gap:8px}.sectionhead h2{margin-bottom:0}.sectionhead small{color:var(--mute)}
-.subgrid{grid-template-columns:1.15fr .85fr;margin-top:16px}.queue{display:grid;gap:9px}.queueitem{display:flex;align-items:center;gap:10px;padding:10px;border:1px solid var(--line);border-radius:9px;background:var(--panel2)}.queueitem strong{font-size:13px}.queueitem small{display:block;color:var(--mute)}.queueitem .qtime{margin-left:auto;color:var(--mute);font-size:11px}
+.subgrid{grid-template-columns:1.15fr .85fr;margin-top:16px}.queue{display:grid;gap:9px}.queueitem{display:flex;align-items:center;gap:10px;padding:10px;border:1px solid var(--line);border-radius:9px;background:var(--panel2);color:var(--text);text-align:left;font:inherit;width:100%;cursor:pointer}.queueitem strong{font-size:13px}.queueitem small{display:block;color:var(--mute)}.queueitem .qtime{margin-left:auto;color:var(--mute);font-size:11px}
 .health{display:grid;gap:13px}.healthrow{display:grid;grid-template-columns:110px 1fr 42px;align-items:center;gap:10px;font-size:12px}.healthbar{height:7px;border-radius:5px;background:var(--panel2);overflow:hidden}.healthbar i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),var(--low));border-radius:inherit}
 .card{background:linear-gradient(145deg,var(--panel),color-mix(in srgb,var(--panel) 88%,#173c6b));border:1px solid var(--line);border-radius:14px;padding:17px;min-width:0;box-shadow:var(--shadow)}
 .card h2{font-size:14px;margin:0 0 12px;font-weight:600;color:var(--mute)}
@@ -79,10 +79,26 @@ aside dt{color:var(--mute)}aside dd{margin:0}
 @media(max-width:900px){.wrap{padding:18px 14px 32px}.kpis{grid-template-columns:1fr 1fr}.main,.low,.subgrid{grid-template-columns:1fr}}
 @media(max-width:560px){.kpis{grid-template-columns:1fr}.hr{width:100%}.hr .btn{flex:1}.opsmeta{width:100%;justify-content:space-between}.row{grid-template-columns:64px 78px 1fr 105px 70px}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.appnav{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:30px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.navbrand{display:flex;align-items:center;gap:9px;color:var(--text);font-weight:600;letter-spacing:.02em}.navbrand i{display:grid;place-items:center;width:25px;height:25px;border-radius:7px;background:var(--accent);color:#06152b;font-style:normal;font-size:14px}
+.navlinks{display:flex;gap:4px;align-items:center}.navlink{border:0;background:transparent;color:var(--mute);padding:7px 11px;border-radius:7px;cursor:pointer;font-size:12px}.navlink:hover,.navlink.active{background:var(--panel2);color:var(--text)}.navlink.active{box-shadow:inset 0 -2px var(--accent)}
+.navtools{display:flex;gap:7px;align-items:center}.shortcut{font-size:11px;color:var(--mute);padding:5px 8px;border:1px solid var(--line);border-radius:5px}
+header{align-items:flex-end}.brandmark{border-radius:7px;width:34px;height:34px;box-shadow:none}.eyebrow{font-size:9px;letter-spacing:.16em}.card{border-radius:9px;box-shadow:none;background:var(--panel)}.kpis{gap:10px}.kpi{padding:14px}.kpi b{font-size:28px}.kpi:after{display:none}.opsbar{border-radius:7px;background:var(--panel);padding:9px 12px}.btn{border-radius:6px;padding:7px 11px}.btn.pri{box-shadow:0 3px 0 #1776a4}.btn:active{transform:translateY(1px);box-shadow:none}.tools{padding:8px;background:var(--bg);border:1px solid var(--line);border-radius:7px}.chip{border-radius:5px;padding:5px 9px}.tools input,.tools select{border-radius:5px}.row{padding:11px 7px}.row:hover{box-shadow:inset 3px 0 var(--accent);background:var(--panel2)}.queueitem{border-radius:6px}.healthbar{border-radius:2px}.healthbar i{background:var(--low)}#map{height:320px}
+.focus .subgrid,.focus .low>div:last-child{display:none}.focus .main{grid-template-columns:1fr}.focus .main>div:last-child{display:none}.focus .kpis{grid-template-columns:repeat(3,1fr)}.focus .kpis .kpi:last-child{display:none}
+@media(max-width:700px){.appnav{margin-bottom:20px;overflow:auto}.navlinks{order:3;width:100%;justify-content:space-between}.appnav{flex-wrap:wrap}.shortcut{display:none}}
 </style>
 </head>
 <body>
 <div class="wrap" id="app">
+<nav class="appnav" aria-label="Main navigation">
+  <div class="navbrand"><i>✦</i><span>sentinel</span></div>
+  <div class="navlinks">
+    <button class="navlink active" data-target="overview">Overview</button>
+    <button class="navlink" data-target="activity">Activity</button>
+    <button class="navlink" data-target="response">Response</button>
+  </div>
+  <div class="navtools"><span class="shortcut">⌘ K search</span><button class="btn" id="focusMode">Focus mode</button></div>
+</nav>
 <header>
   <div class="brand"><div class="brandmark">✦</div><div><div class="eyebrow">Security operations center</div><h1>Sentinel<small>Global threat monitoring · simulated data</small></h1></div></div>
   <div class="hr">
@@ -100,7 +116,7 @@ aside dt{color:var(--mute)}aside dd{margin:0}
   <div class="opsmeta"><span>Region: <strong>Global</strong></span><span>Window: <strong>Last 60 min</strong></span><span>Analyst: <strong>On duty</strong></span></div>
 </div>
 
-<section class="grid kpis" aria-label="Key figures">
+<section class="grid kpis" id="overview" aria-label="Key figures">
   <div class="card kpi b"><b id="k1">0</b><span>Total alerts</span><small class="trend">↑ 18.4% vs previous hour</small></div>
   <div class="card kpi c"><b id="k2">0</b><span>Critical, unresolved</span><small class="trend warn">Needs attention</small></div>
   <div class="card kpi"><b id="k3">0</b><span>Sources blocked</span><small class="trend">↑ automated response</small></div>
@@ -115,7 +131,7 @@ aside dt{color:var(--mute)}aside dd{margin:0}
   </div>
 </section>
 
-<section class="grid low">
+<section class="grid low" id="activity">
   <div class="card"><div class="sectionhead"><h2>Alert feed</h2><small id="feedCount">Showing latest events</small></div>
     <div class="tools">
       <button class="chip" data-s="critical" aria-pressed="true">Critical</button>
@@ -130,12 +146,12 @@ aside dt{color:var(--mute)}aside dd{margin:0}
   <div class="card"><h2>Alerts over time</h2><canvas id="tl" aria-label="Line chart of alerts over time"></canvas><p class="mute" style="margin:8px 0 0;font-size:12px">Each point is a 3-second window.</p></div>
 </section>
 
-<section class="grid subgrid">
+<section class="grid subgrid" id="response">
   <div class="card"><div class="sectionhead"><h2>Response queue</h2><small>Analyst workflow</small></div>
     <div class="queue">
-      <div class="queueitem"><span class="tag critical">P1</span><div><strong>Investigate repeated brute force</strong><small>Identity perimeter · 3 sources</small></div><span class="qtime">Now</span></div>
-      <div class="queueitem"><span class="tag high">P2</span><div><strong>Review suspicious SQL activity</strong><small>Database cluster · Singapore</small></div><span class="qtime">8m</span></div>
-      <div class="queueitem"><span class="tag medium">P3</span><div><strong>Validate endpoint isolation</strong><small>Finance workspace · 12 devices</small></div><span class="qtime">24m</span></div>
+      <button class="queueitem" data-queue="Brute force investigation"><span class="tag critical">P1</span><span><strong>Investigate repeated brute force</strong><small>Identity perimeter · 3 sources</small></span><span class="qtime">Now</span></button>
+      <button class="queueitem" data-queue="SQL activity review"><span class="tag high">P2</span><span><strong>Review suspicious SQL activity</strong><small>Database cluster · Singapore</small></span><span class="qtime">8m</span></button>
+      <button class="queueitem" data-queue="Endpoint isolation validation"><span class="tag medium">P3</span><span><strong>Validate endpoint isolation</strong><small>Finance workspace · 12 devices</small></span><span class="qtime">24m</span></button>
     </div>
   </div>
   <div class="card"><div class="sectionhead"><h2>Platform health</h2><small>Updated live</small></div>
@@ -290,6 +306,20 @@ document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>{const s=c.dataset.s
 $("#q").oninput=()=>render();$("#type").onchange=()=>render();
 $("#pause").onclick=()=>{paused=!paused;$("#pause").textContent=paused?"Resume feed":"Pause feed";$("#st").textContent=paused?"Paused":"Live";document.body.classList.toggle("paused",paused);};
 $("#theme").onclick=()=>{document.documentElement.classList.toggle("light");toast(document.documentElement.classList.contains("light")?"Light theme enabled":"Dark theme enabled");};
+$("#focusMode").onclick=()=>{
+  document.body.classList.toggle("focus");
+  const focused=document.body.classList.contains("focus");
+  $("#focusMode").textContent=focused?"Exit focus":"Focus mode";
+  toast(focused?"Focus mode: activity only":"Full workspace restored");
+};
+document.querySelectorAll(".navlink").forEach(n=>n.onclick=()=>{
+  document.querySelectorAll(".navlink").forEach(b=>b.classList.remove("active"));
+  n.classList.add("active");document.getElementById(n.dataset.target).scrollIntoView({behavior:"smooth",block:"start"});
+});
+document.querySelectorAll(".queueitem").forEach(item=>item.onclick=()=>toast(`Opened ${item.dataset.queue}`));
+addEventListener("keydown",e=>{
+  if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){e.preventDefault();$("#q").focus();toast("Search is ready");}
+});
 $("#export").onclick=()=>{
   const head="id,time,severity,type,source_ip,origin,target,status\n";
   const csv=head+alerts.map(a=>[a.id,a.t.toISOString(),a.sev,a.type,a.ip,`${a.city}, ${a.country}`,a.tgt[0],a.status].map(v=>`"${String(v).replace(/"/g,'""')}"`).join(",")).join("\n");

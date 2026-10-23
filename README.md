@@ -9,6 +9,7 @@ A single-page security operations center (SOC) dashboard built with plain HTML, 
 - KPI counters, severity doughnut chart, top attack types and alerts-over-time chart
 - SOC product shell with operational status bar, response queue and platform health
 - Light/dark theme toggle and CSV export for the simulated alert stream
+- Analyst workspace navigation, focus mode, keyboard search shortcut and response queue actions
 - Threat level indicator based on recent alert severity
 - Pause/resume, clear alerts, keyboard support (Esc), responsive layout, reduced-motion support
 
